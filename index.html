@@ -227,5 +227,31 @@ body {
   </head>
   <body>
     <div id="root"></div>
+    <style>
+  /* This overrides the existing dot cursor with your image */
+  #cursor-dot {
+    background-image: url('assets/cursor.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    width: 32px !important;  /* Change size here */
+    height: 32px !important; /* Change size here */
+  }
+
+  /* This hides the blue ring so only your image shows */
+  #cursor-ring {
+    display: none !important;
+  }
+
+  /* This prevents the cursor from changing back to a dot when hovering over links */
+  body:has(a:hover) #cursor-dot, 
+  body:has(button:hover) #cursor-dot {
+    width: 32px !important;
+    height: 32px !important;
+    background-color: transparent !important;
+  }
+</style>
   </body>
 </html>
