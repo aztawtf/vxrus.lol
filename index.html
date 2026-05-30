@@ -227,29 +227,51 @@ body {
   </head>
   <body>
     <div id="root"></div>
-    <style>
-  /* This overrides the existing dot cursor with your image */
-  #cursor-dot {
+<style>
+  /* 1. Prevent highlighting text */
+  body {
+    -webkit-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+  }
+
+  /* 2. Replace the white dot with cursor.png */
+  .cursor-dot, #cursor-dot {
     background-image: url('assets/cursor.png') !important;
+    background-color: transparent !important; /* Removes the white color */
     background-size: contain !important;
     background-repeat: no-repeat !important;
-    background-color: transparent !important;
+    background-position: center !important;
+    
+    /* Removes the round shape and glow */
     box-shadow: none !important;
     border-radius: 0 !important;
-    width: 32px !important;  /* Change size here */
-    height: 32px !important; /* Change size here */
+    border: none !important;
+    
+    /* Set the size */
+    width: 32px !important; 
+    height: 32px !important;
+    
+    /* Ensure it's visible */
+    opacity: 1 !important;
+    display: block !important;
   }
 
-  /* This hides the blue ring so only your image shows */
-  #cursor-ring {
+  /* 3. Hide the outer ring completely */
+  .cursor-ring, #cursor-ring {
     display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
   }
 
-  /* This prevents the cursor from changing back to a dot when hovering over links */
+  /* 4. Stop it from changing back to a white dot when you hover over links */
+  body:has(a:hover) .cursor-dot, 
+  body:has(button:hover) .cursor-dot,
   body:has(a:hover) #cursor-dot, 
   body:has(button:hover) #cursor-dot {
     width: 32px !important;
     height: 32px !important;
+    background-image: url('assets/cursor.png') !important;
     background-color: transparent !important;
   }
 </style>
