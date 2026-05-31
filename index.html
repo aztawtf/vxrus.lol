@@ -228,49 +228,47 @@ body {
   <body>
     <div id="root"></div>
 <style>
-  /* 1. Prevent highlighting text */
+  /* 1. Import Orbitron font from Google Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+  /* 2. Apply Orbitron to EVERY piece of text */
+  * {
+    font-family: 'Orbitron', sans-serif !important;
+  }
+
+  /* 3. Prevent highlighting text */
   body {
     -webkit-user-select: none !important;
     -ms-user-select: none !important;
     user-select: none !important;
   }
 
-  /* 2. Replace the white dot with cursor.png */
+  /* 4. Replace the white dot with cursor.png */
   .cursor-dot, #cursor-dot {
     background-image: url('assets/cursor.png') !important;
-    background-color: transparent !important; /* Removes the white color */
+    background-color: transparent !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
-    
-    /* Removes the round shape and glow */
     box-shadow: none !important;
     border-radius: 0 !important;
     border: none !important;
-    
-    /* Set the size */
     width: 32px !important; 
     height: 32px !important;
-    
-    /* Ensure it's visible */
     opacity: 1 !important;
     display: block !important;
   }
 
-  /* 3. Hide the outer ring completely */
+  /* 5. Hide the outer ring */
   .cursor-ring, #cursor-ring {
     display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
   }
 
-  /* 4. Stop it from changing back to a white dot when you hover over links */
+  /* 6. Keep cursor consistent on hover */
   body:has(a:hover) .cursor-dot, 
   body:has(button:hover) .cursor-dot,
   body:has(a:hover) #cursor-dot, 
   body:has(button:hover) #cursor-dot {
-    width: 32px !important;
-    height: 32px !important;
     background-image: url('assets/cursor.png') !important;
     background-color: transparent !important;
   }
